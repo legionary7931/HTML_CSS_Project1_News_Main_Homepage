@@ -1,16 +1,16 @@
-/* CSS Reset */
-
+/* CSS Initializing */
 body{
     margin: 0;
-    background-color: hsl(36, 100%, 99%);
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+}
+
+h1, h2, h3, p{
+    margin: 0;
 }
 
 ul{
     list-style-type: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 a{
@@ -18,183 +18,211 @@ a{
     color: inherit;
 }
 
-h1, h2, h3, p{
-    margin: 0;
-}
-
 
 /* LayOuts */
-.wrapper{
+
+.l_wrapper{
     width: 1440px;
     margin: 0 auto;
+
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "body body sidebar"
+        "body body sidebar"
+        "footer footer footer";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr 1fr 0.3fr;
+    gap: 30px;
+    
 }
 
-.header{
-    padding: 80px 0;
-    display: flow-root;
+.l_header{
+    grid-area: header;
+    margin: 80px 0;
 }
 
-.main{
-    height: 630px;
-    overflow: hidden;
-}
-
-/* Header Contents */
-.header_logo{
-    float: left;
-}
-
-.header_menu{
-    float: right;
-    color: #808080;
-}
-
-.header_menu li{
-    margin-left: 40px;
-    display: inline-block;
-    letter-spacing: 0.5px;
-}
-
-.header_menu li:hover{
-    color: hsl(35, 77%, 62%); /* 이거 바뀔때 애니메이션 한번 넣어보기 */
-}
-
-/* Main Sidebar Contents */
-.main_sidebar{
-    float: right;
-    background-color: hsl(240, 100%, 5%);
-    padding: 40px;
-    width: 374px;
-    height: 100%;
-    margin-left: 40px;
-    overflow: hidden;
-}
-
-.main_sidebar h1{
-    color:hsl(35, 77%, 62%);
-    font-size: 40px;
-    font-weight: 800;
-}
-
-.main_sidebar div:last-child{
-    border-bottom-style: none;
-}
-
-.article{
-    border-bottom: 1px solid #808080;
-    margin: 20px 0;
-    height: 25%;
+.l_body{
+    grid-area: body;
     position: relative;
 }
 
-.article_contents{
+.l_contents{
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.article a{
-    color: hsl(36, 100%, 99%);
-    font-weight: 700;
-    font-size: 20px;
+.l_sidebar{
+    grid-area: sidebar;
 }
 
-.article a:hover{
-    color: hsl(35, 77%, 62%); 
+.l_footer{
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
 }
 
-.article p{
-    padding-top: 10px;
-    color: #808080;
-    line-height: 2em;
-}
+/* Header Components */
+.main_logo{}
 
-/* Main contents */
-.main_page{
-    overflow: hidden;
-}
-
-.main_page img{
-    width: 100%;
-}
-
-.main_box{
-    overflow: hidden;
-    margin: 20px auto;
-}
-
-.main_texts{
-    width: 50%;
+.main_menu{
     float: right;
-    color: #808080;
-    line-height: 2em;
+    font-family: 'Inter-Regular', sans-serif;
 }
 
-.main_title{
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 2.3em;
+.main_menu li{
+    display: inline-block;
+    margin-left: 60px;
+    color: hsl(236, 13%, 42%);
 }
 
-.r_button{
-    margin-top: 40px;
+.main_menu li:hover{
+    color: hsl(35, 77%, 62%)
+}
+
+.main_menu_mobile{
+    display: none;
+}
+
+/* body Components */ 
+
+.cover{
+    max-width: 100%;
+    height: auto;
+} /* 중요 1*/
+
+.cover_mobile{
+    display: none;
+} /* Responsive Web, active in @media */
+.body_title{
+    width: 50%;
+    font-family: 'Inter-ExtraBold', sans-serif;
+    font-size: 32px;
+}
+
+.body_contents{
+    position: relative;
+    width: 50%;
+    font-family: 'Inter-Regular', sans-serif;
+}
+
+.body_contents p{
+   font-size: 17px;
+   line-height: 1.5em;
+   color: hsl(236, 13%, 42%);
+}
+
+.body_contents button{
+    position: absolute;
+    bottom: 0;
     background-color: hsl(5, 85%, 63%);
     border-style: none;
-    color:hsl(36, 100%, 99%);
+    color: hsl(36, 100%, 99%);
+    letter-spacing: 0.4em;
+    padding: 20px 40px;
+
+}
+
+/* Sidebar Components */
+.sidebar{
+    padding: 40px;
+    background-color: hsl(240, 100%, 5%);
+}
+
+.sidebar h1{
+    font-size: 45px;
+    font-family: 'Inter-Bold', serif;
+    color:hsl(35, 77%, 62%);
+}
+
+.sidebar_article{
+    border-bottom: 1px solid hsl(233, 8%, 79%);
+    padding: 40px 0;
+}
+
+.sidebar_article a{
+    display: inline-block;
     font-size: 20px;
-    padding: 20px;
-    letter-spacing: 0.3em;
-    text-align: center;  
+    font-family: 'Inter-Bold', serif;
+    color: hsl(36, 100%, 99%);
+    margin-bottom: 10px;
+} /* 중요 2 a는 inline이므로 margin 적용 불가에 유의 */
+
+.sidebar_article a:hover{
+    color:hsl(35, 77%, 62%);
 }
 
-.top-articles{
-    margin: 40px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.popular-article{
-    display: flex;
-}
-
-.article-cover{
-    margin: 0 25px;
-}
-
-.popular-article-contents{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-
-.popular-article-contents h2{
-    font-size: 50px;
+.sidebar_article p{
+    font-family: 'Inter-Regular', serif;
     color: hsl(233, 8%, 79%);
-}
-
-.popular-article-contents p{
-    color: #808080;
     line-height: 2em;
 }
 
-/* util */
+.sidebar_article:last-child{
+    border: none;
+}
+
+/* footer components */
+
+.footer-article{
+    width: 30%;
+}
+
+.footer-cover{
+    float: left;
+    margin-right: 10px;
+}
+
+.footer-contents h2{
+    color: hsl(233, 8%, 79%);
+    font-family: 'Inter-Extrabold', serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-contents h3{
+    color: hsl(240, 100%, 5%);
+    font-family: 'Inter-Bold', serif;
+    margin-bottom: 20px;
+}
+
+.footer-contents p{
+    color: hsl(236, 13%, 42%);
+    line-height: 1.5em;
+}
+
+
+/* attribution components */
+
+.attribution { font-size: 11px; text-align: center; margin: 20px auto; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+
+/* Utils(Clearfix, Fonts, Responsive etc...) */
 .clearfix::after{
-    display: table;
-    content: " ";
+    display: block;
+    content: '';
     clear: both;
 }
 
-@media(max-width:375px){
-    .main_cover,
-    .main_box{
-        display: block;
-    }
-
-    .main_sidebar{
-        float: none;
-    }
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('./assets/fonts/static/Inter-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url('./assets/fonts/static/Inter-Bold.ttf') format('truetype');
+}
 
+@font-face {
+    font-family: 'Inter-ExtraBold';
+    src: url('./assets/fonts/static/Inter-ExtraBold.ttf') format('truetype');
+}
 
+@media (max-width: 345px){
+    
+
+}
