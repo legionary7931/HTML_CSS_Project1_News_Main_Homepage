@@ -13,8 +13,9 @@ HTML과 CSS를 사용하여 처음으로 만든 웹페이지다. 문제는 해�
 - [개발자](#author)
 
 ### Screenshot
-
+<데스크 탑>
 ![](./screenshot.png)
+<모바일>
 ![](./screenshot_mobile.png)
 
 ## My process
